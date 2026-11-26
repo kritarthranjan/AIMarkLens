@@ -56,12 +56,15 @@
 - [What it can and cannot detect](#what-it-can-and-cannot-detect)
 - [Configuration](#configuration)
 - [Privacy and security](#privacy-and-security)
+- [Privacy policy](PRIVACY.md)
+- [Security policy](SECURITY.md)
 - [Building from source](#building-from-source)
 - [Project structure](#project-structure)
 - [Troubleshooting](#troubleshooting)
 - [FAQ](#faq)
 - [Responsible use](#responsible-use)
 - [Contributing](#contributing)
+- [Contributing guide](CONTRIBUTING.md)
 - [Licence](#licence)
 - [Acknowledgements](#acknowledgements)
 
@@ -355,6 +358,9 @@ installs it for your user only. It also finds tools in a `tools` folder next to 
 
 ## Privacy and security
 
+See [PRIVACY.md](PRIVACY.md) for details about data handling and [SECURITY.md](SECURITY.md) to report a
+vulnerability privately.
+
 - **Originals are never modified.** Files are opened read-only and their SHA-256 hash is verified after every
   analysis. Exports are written to separate files, atomically, and can never overwrite the analysed file.
 - **Nothing is uploaded without your action.** Online verification asks before each upload by default and names the
@@ -516,9 +522,8 @@ ways to remove or defeat invisible watermarks or AI detection.
 
 ## Contributing
 
-Issues and pull requests are welcome. Please run the test suite before submitting, keep engines free of Qt imports,
-and add tests for new parsers or detectors. Report security problems privately to the maintainers rather than in a
-public issue.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and contribution guidelines. Report security problems privately
+using the process in [SECURITY.md](SECURITY.md), not in a public issue.
 
 ## Licence
 

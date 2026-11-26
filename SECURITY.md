@@ -1,6 +1,3 @@
-
-**`SECURITY.md`**
-```markdown
 # Security Policy
 
 ## Reporting a vulnerability
@@ -20,3 +17,6 @@ No response time or support period is guaranteed.
 
 When reporting an issue, use the latest release if possible and state the exact version you tested. Older releases
 may not receive security fixes.
+
+Automated CodeQL and secret scans help identify some problems, but they cannot guarantee that all vulnerabilities
+or exposed credentials will be found.

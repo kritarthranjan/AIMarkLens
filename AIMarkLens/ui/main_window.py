@@ -282,7 +282,12 @@ class MainWindow(QMainWindow):
 
     def save_settings(self) -> None:
         was_online = getattr(self, "_saved_network", None)
-        self.store.save(self.settings)
+        try:
+            self.store.save(self.settings)
+        except OSError:
+            self.toasts.show("error", "Could not save API keys",
+                             "Windows could not encrypt an API key. Your settings were not saved; try again later.")
+            return
         self._saved_network = self.settings.allow_network
         if was_online is not None and was_online != self.settings.allow_network:
             self._connection = None

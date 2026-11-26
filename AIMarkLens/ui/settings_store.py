@@ -91,6 +91,10 @@ class SettingsStore:
 
     def save(self, s: AppSettings) -> None:
         q = self._qs
+        online_values = {
+            name: protect(getattr(s.online, name)) if name in _SECRET_FIELDS else getattr(s.online, name)
+            for name in _ONLINE_FIELDS
+        }
         q.setValue("tools/exiftool", s.exiftool_path)
         q.setValue("tools/c2patool", s.c2patool_path)
         q.setValue("network/online", s.allow_network)
@@ -106,8 +110,7 @@ class SettingsStore:
         q.setValue("tools/offer_install", s.offer_tool_install)
         q.setValue("analysis/history", s.remember_history)
         for name in _ONLINE_FIELDS:
-            value = getattr(s.online, name)
-            q.setValue(f"online/{name}", protect(value) if name in _SECRET_FIELDS else value)
+            q.setValue(f"online/{name}", online_values[name])
         q.sync()
 
     def geometry(self) -> QByteArray | None:

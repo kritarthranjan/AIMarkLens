@@ -41,4 +41,3 @@ require passing checks.
 
 Open a pull request with a clear summary, relevant test results, and any user-facing changes. For security
 vulnerabilities, do not open a public issue; follow [SECURITY.md](SECURITY.md) instead.
-

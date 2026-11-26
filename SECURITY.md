@@ -3,9 +3,9 @@
 ## Reporting a vulnerability
 
 Please report security vulnerabilities privately. Use the **Report a vulnerability** option in this repository's
-GitHub **Security** tab when it is available. If private vulnerability reporting is unavailable, contact the
-repository maintainer through [their GitHub profile](https://github.com/kritarthranjan). Do not post vulnerability
-details in a public issue or discussion.
+GitHub **Security** tab when it is available. If private vulnerability reporting is unavailable, use
+[the maintainer's GitHub profile](https://github.com/kritarthranjan) to request a private contact method. Do not
+send vulnerability details until you have a private channel, and do not post them in a public issue or discussion.
 
 Include the affected AIMarkLens version, Windows version, steps to reproduce, and the potential impact. Do not send
 real API keys, private images, or other sensitive user data. You may use a minimal synthetic example instead.
@@ -20,4 +20,3 @@ may not receive security fixes.
 
 Automated CodeQL and secret scans help identify some problems, but they cannot guarantee that all vulnerabilities
 or exposed credentials will be found.
-

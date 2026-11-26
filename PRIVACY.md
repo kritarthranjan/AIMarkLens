@@ -18,8 +18,9 @@ online feature. Original files are opened read-only; reports and copies are save
 ## Data stored on your computer
 
 - **Settings and service credentials:** stored in the user's application settings. On Windows, saved API secrets
-  are protected with Windows DPAPI for the current Windows user. Google authentication may also use credentials
-  managed by Google Cloud tools or a service-account file that you selected.
+  are protected with Windows DPAPI for the current user when available. If DPAPI protection fails, the current
+  implementation may store them as plain text. Google authentication may also use credentials managed by Google
+  Cloud tools or a service-account file that you selected.
 - **Analysis history:** when enabled, AIMarkLens stores image hashes, perceptual hashes, file names, findings,
   timestamps, copy relationships, and online verification results. It does not store image contents in the history.
   You can turn history off or clear it in the application.
@@ -39,4 +40,3 @@ AIMarkLens data does not delete data held by a provider.
 
 For security vulnerability reports, see [SECURITY.md](SECURITY.md). For privacy questions or documentation
 corrections, open an issue without including private files or credentials.
-

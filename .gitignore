@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Build output
+build/
+dist/
+.dist/
+*.spec.bak
+AIMarkLens/_build_info.py
+
+# Editors and OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Local working files (requirements notes, test exports)
+sa.txt
+assets/*-metadata-free.*

@@ -20,4 +20,3 @@ may not receive security fixes.
 
 Automated CodeQL and secret scans help identify some problems, but they cannot guarantee that all vulnerabilities
 or exposed credentials will be found.
-

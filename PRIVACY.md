@@ -39,4 +39,3 @@ AIMarkLens data does not delete data held by a provider.
 
 For security vulnerability reports, see [SECURITY.md](SECURITY.md). For privacy questions or documentation
 corrections, open an issue without including private files or credentials.
-

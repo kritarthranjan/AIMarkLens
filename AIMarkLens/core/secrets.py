@@ -45,10 +45,7 @@ def protect(value: str) -> str:
     if not value:
         return ""
     if sys.platform == "win32":
-        try:
-            return _PREFIX + base64.b64encode(_crypt(value.encode("utf-8"), True)).decode("ascii")
-        except OSError:
-            pass
+        return _PREFIX + base64.b64encode(_crypt(value.encode("utf-8"), True)).decode("ascii")
     return _PLAIN + value
 
 

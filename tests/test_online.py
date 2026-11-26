@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+import sys
 
 import pytest
 
@@ -177,9 +178,42 @@ def test_settings_store_encrypts_keys(tmp_path):
     settings.online.google_project = "my-project"
     store.save(settings)
     ini = next(tmp_path.rglob("*.ini")).read_text()
-    assert "hive-secret-123" not in ini and "my-project" in ini
+    if sys.platform == "win32":
+        assert "hive-secret-123" not in ini
+    else:
+        assert "plain:hive-secret-123" in ini
+    assert "my-project" in ini
     again = SettingsStore().load()
     assert again.online.hive_key == "hive-secret-123"
+
+
+def test_settings_store_does_not_save_if_windows_encryption_fails(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+
+    from PySide6.QtCore import QSettings
+
+    import AIMarkLens.core.secrets as secrets
+
+    QSettings.setPath(QSettings.Format.IniFormat, QSettings.Scope.UserScope, str(tmp_path))
+    monkeypatch.setattr(secrets, "sys", SimpleNamespace(platform="win32"))
+
+    def fail_encryption(*_args):
+        raise OSError("DPAPI operation failed")
+
+    monkeypatch.setattr(secrets, "_crypt", fail_encryption)
+    from AIMarkLens.ui.settings_store import SettingsStore
+
+    store = SettingsStore()
+    settings = store.load()
+    settings.online.hive_key = "must-not-be-saved"
+    from AIMarkLens.ui.main_window import MainWindow
+
+    notifications = []
+    window = SimpleNamespace(store=store, settings=settings,
+                             toasts=SimpleNamespace(show=lambda *args: notifications.append(args)))
+    MainWindow.save_settings(window)
+    assert notifications[0][0:2] == ("error", "Could not save API keys")
+    assert not list(tmp_path.rglob("*.ini"))
 
 
 def test_hive_v3_secret_key_with_value_scores(server, jpeg_with_metadata):

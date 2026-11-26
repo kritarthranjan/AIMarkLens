@@ -28,6 +28,11 @@
   <a href="#faq">FAQ</a>
 </p>
 
+<p align="center">
+  If AIMarkLens is useful to you, <a href="https://github.com/kritarthranjan/AIMarkLens">star the repository</a>
+  to help others discover it.
+</p>
+
 ---
 
 > **Analyse without altering. Preserve the original.**
